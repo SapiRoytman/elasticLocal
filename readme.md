@@ -1,0 +1,2 @@
+elasticAsync:
+pip install aiohttp
