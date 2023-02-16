@@ -29,7 +29,7 @@ async def get_elastic_data(session, url, data: dict, freq: str):
         return {"results": f"timeout error on {data}"}
 
 
-async def searchAsync(json_requests: [dict], freq):
+async def searchAsync(json_requests, freq):
     async with aiohttp.ClientSession() as session:
         tasks = []
         for json_body in json_requests:
@@ -39,7 +39,7 @@ async def searchAsync(json_requests: [dict], freq):
         return all_data
 
 
-def search(json_requests: [dict], freq='527') -> [{}]:
+def search(json_requests, freq='527'):
     '''
 
     :param json_requests:

@@ -1,16 +1,24 @@
-# This is a sample Python script.
+from elasticAsyncUtils import json_request_body_generator
+from elasticAsync import search
 
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
+def test_json_request_body_generator():
+    exp_id = "63ea9306a1793526182c2448"
+    tag = "voice"
+    start_tfs = 10
+    end_tfs = 50
+    elastic_index = "soos-2"
+    time_frame=5
+    json_bodies = json_request_body_generator(exp_id, tag, start_tfs, end_tfs, elastic_index)
+    return json_bodies
 
+def test_search():
+    json_bodies = test_json_request_body_generator()
+    results = search(json_bodies)
+    return results
+    
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
+    print(test_search())
+    
+    
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
